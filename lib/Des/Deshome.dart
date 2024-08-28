@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:movieapi/Des/DesCus.dart';
+import 'package:movieapi/Des/Dessearch.dart';
 import 'package:movieapi/custom.dart';
 import 'package:movieapi/search.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class DesHomePage extends StatefulWidget {
+  const DesHomePage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<DesHomePage> createState() => _DesHomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _DesHomePageState extends State<DesHomePage> {
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.sizeOf(context).height;
+    final width = MediaQuery.sizeOf(context).width;
     return Scaffold(
       backgroundColor: Colors.black,
       drawer: Drawer(
@@ -45,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SearchPage()),
+                    MaterialPageRoute(builder: (context) => Dessearch()),
                   );
                 },
               ),
@@ -70,7 +74,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => SearchPage()),
+                MaterialPageRoute(builder: (context) => Dessearch()),
               );
             },
             icon: Icon(
@@ -85,28 +89,31 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Custom_Series(
+            DesCustom_Series(
               Apikey:
                   "https://api.themoviedb.org/3/tv/top_rated?api_key=2b5b897f647f0968f0d8a11462b09058",
             ),
-            Custom_Movies(
+            SizedBox(
+              height: height / 20,
+            ),
+            DesCustom_Movies(
               Apikey:
                   "https://api.themoviedb.org/3/movie/top_rated?api_key=2b5b897f647f0968f0d8a11462b09058",
               title: "Top Rated Movies",
             ),
-            Custom_Movies(
+            DesCustom_PopSeries(
+                Apikey:
+                    "https://api.themoviedb.org/3/tv/top_rated?api_key=2b5b897f647f0968f0d8a11462b09058",
+                title: "Top Rated Series"),
+            DesCustom_Movies(
                 Apikey:
                     "https://api.themoviedb.org/3/movie/popular?api_key=2b5b897f647f0968f0d8a11462b09058",
                 title: "Popular Movies"),
-            Custom_PopSeries(
-                Apikey:
-                    "https://api.themoviedb.org/3/tv/top_rated?api_key=2b5b897f647f0968f0d8a11462b09058",
-                title: "TopRated Series"),
-            Custom_PopSeries(
+            DesCustom_PopSeries(
                 Apikey:
                     "https://api.themoviedb.org/3/tv/popular?api_key=2b5b897f647f0968f0d8a11462b09058",
                 title: "Popular Series"),
-            Custom_Movies(
+            DesCustom_Movies(
                 Apikey:
                     "https://api.themoviedb.org/3/movie/upcoming?api_key=2b5b897f647f0968f0d8a11462b09058",
                 title: "Upcoming"),
